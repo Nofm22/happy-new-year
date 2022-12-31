@@ -1,41 +1,330 @@
-<html>
-	<head>
-		<title>Happy New Year</title>
-		<meta name="viewport" content="width=960">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<link href="css/style.css" rel="stylesheet" type="text/css">
-		<link href="css/flipclock.css" rel="stylesheet" type="text/css">
-		<link href="css/animate.css" rel="stylesheet" type="text/css">
-		<link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                background-color: black;
+                overflow: hidden;
+            }
+            h1 {
+                text-align: center;
+                color: #c0c0c0;
+                position: relative;
+                top: 100px;
+                font-family: Arial Narrow, Arial, sans-serif;
+                font-weight: lighter;
+                font-size: 48px;
+                margin: 0;
+                letter-spacing: 20px;
+            }
+            .fireworks {
+                height: 100vh;
+                width: 100vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .fireworks .firework {
+                position: relative;
+                top: 0px;
+                left: 0px;
+                margin: 0px 50px;
+            }
+            .fireworks .firework:before {
+                content: "";
+                display: block;
+                border-radius: 5px;
+                background-color: #daa520;
+                width: 5px;
+                height: 0px;
+                will-change: transform;
+                transform: translateY(1000px);
+                animation: fireworkstart 3s ease-out infinite;
+            }
+            .fireworks .firework .explosion {
+                position: absolute;
+                top: 0;
+                width: 5px;
+                height: 20px;
+                opacity: 0;
+                transform-origin: top center;
+                will-change: transform;
+                animation: explosion 0.7s linear 3s infinite;
+            }
+            .fireworks .firework .explosion:nth-child(1) {
+                transform: rotate(0deg);
+            }
+            .fireworks .firework .explosion:nth-child(2) {
+                transform: rotate(90deg);
+            }
+            .fireworks .firework .explosion:nth-child(3) {
+                transform: rotate(180deg);
+            }
+            .fireworks .firework .explosion:nth-child(4) {
+                transform: rotate(-90deg);
+            }
+            .fireworks .firework .explosion:nth-child(5) {
+                transform: rotate(45deg);
+            }
+            .fireworks .firework .explosion:nth-child(6) {
+                transform: rotate(-45deg);
+            }
+            .fireworks .firework .explosion:nth-child(7) {
+                transform: rotate(135deg);
+            }
+            .fireworks .firework .explosion:nth-child(8) {
+                transform: rotate(225deg);
+            }
 
-		<link href="http://peterschmalfeldt.com/images/favicon.ico" rel="shortcut icon">
+            .fireworks .firework .explosion .spark {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 5px;
+                will-change: transform;
+                animation: explosion2 0.7s ease-in-out 3s infinite;
+            }
 
-		<link rel="apple-touch-icon-precomposed" href="http://peterschmalfeldt.com/images/apple/icon-57x57.png" />
-		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://peterschmalfeldt.com/images/apple/icon-72x72.png" />
-		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://peterschmalfeldt.com/images/apple/icon-114x114.png" />
-		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://peterschmalfeldt.com/images/apple/icon-144x144.png" />
+            .fireworks .firework .explosion .spark.silver {
+                background-color: #c0c0c0;
+            }
+            .fireworks .firework .explosion .spark.gold {
+                background-color: #daa520;
+            }
+            @keyframes fireworkstart {
+                0% {
+                    height: 0px;
+                    transform: translateY(1000px);
+                }
+                50% {
+                    height: 50px;
+                }
+                75% {
+                    height: 30px;
+                }
+                100% {
+                    height: 0;
+                    transform: translateY(0);
+                }
+            }
 
-		<link rel="apple-touch-startup-image" media="(device-width: 320px)" href="http://peterschmalfeldt.com/images/apple/startup-image-320x460.jpg"><!-- iPhone -->
-		<link rel="apple-touch-startup-image" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" href="http://peterschmalfeldt.com/images/apple/startup-image-640x920.jpg"><!-- iPhone (Retina) -->
-		<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="http://peterschmalfeldt.com/images/apple/startup-image-640x1096.jpg"><!-- iPhone 5 -->
-		<link rel="apple-touch-startup-image" media="(device-width: 768px) and (orientation: portrait)" href="http://peterschmalfeldt.com/images/apple/startup-image-768x1004.jpg"><!-- iPad (portrait) -->
-		<link rel="apple-touch-startup-image" media="(device-width: 768px) and (orientation: landscape)" href="http://peterschmalfeldt.com/images/apple/startup-image-748x1024.jpg"><!-- iPad (landscape) -->
-		<link rel="apple-touch-startup-image" media="(device-width: 768px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="http://peterschmalfeldt.com/images/apple/startup-image-1536x2008.jpg"><!-- iPad (Retina, portrait) -->
-		<link rel="apple-touch-startup-image" media="(device-width: 768px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" href="http://peterschmalfeldt.com/images/apple/startup-image-1496x2048.jpg"><!-- iPad (Retina, landscape) -->
-	</head>
-	<body>
-		<div class="wrapper">
-			<div class="clock animated flipInX"></div>
-		</div>
-		<canvas id="confetti"></canvas>
-		<div class="message">Happy New Year !!!</div>
-		<div class="stars"></div>
-		<div class="twinkling"></div>
-		<div class="clouds"></div>
-		
-		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-		<script src="js/flipclock.js"></script>
-		<script src="js/newyear.js"></script>
-	</body>
+            @keyframes explosion {
+                0% {
+                    height: 0px;
+                    opacity: 0;
+                }
+                50% {
+                    height: 25px;
+                    opacity: 1;
+                }
+                100% {
+                    height: 0px;
+                    opacity: 0;
+                }
+            }
+            @keyframes explosion2 {
+                0% {
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(5px);
+                }
+                75% {
+                    transform: translateY(50px);
+                }
+                100% {
+                    transform: translateY(70px);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>HAPPY NEW YEAR</h1>
+        <div class="fireworks">
+            <div class="firework">
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+            </div>
+            <div class="firework" style="margin-top: -70px">
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+            </div>
+            <div class="firework">
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+            </div>
+            <div class="firework" style="margin-top: 70px">
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+            </div>
+            <div class="firework">
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+            </div>
+            <div class="firework" style="margin-top: -70px">
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark silver"></div>
+                </div>
+            </div>
+            <div class="firework">
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+                <div class="explosion">
+                    <div class="spark gold"></div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
